@@ -1,0 +1,33 @@
+#cat{
+    top: 266px; 
+    left: 1234px;
+}
+#pig{
+    padding-left: 0px;
+    padding-top: 185px;
+}
+.aa{
+    text-align: center;
+    height: auto;
+}
+
+div#information{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 400px; /* 텍스트의 하단 여백 설정 */
+    left: 50%; /* 가운데 정렬을 위한 왼쪽 여백 설정 */
+    transform: translateX(-50%); /* 가운데 정렬 */
+}
+div.gameover{
+    text-align: center;
+}
+h6#stopwatch{
+    text-align: right;
+}
+#line{
+    margin-top: 0;
+}
+#pleaseReconnect{
+    visibility: hidden;
+}

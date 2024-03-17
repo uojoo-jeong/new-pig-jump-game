@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play game</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body onLoad = "init()" style="overflow: hidden; touch-action: none;">
+    <div class="gameBg" id="moblieHidden">
+        <h6 id="stopwatch">00:00:00</h6>
+        <input type="button" value="Pause" onclick="autoStop(); stopClock();">
+        <div>
+            <img id="cat" src="./cat.jpg" width="104.95px" height="104.15px" style="position: absolute; top: 266px; left: 3456px;"/>
+        </div>
+        <div class="aa">
+            <img id="pig" class="pigXY" width="115.12px" height="92.2px" src="./pig.jpg"/>
+            <hr id="line"/>
+        </div>
+        <div id="information">
+            <p>(If you want to play, please click the play button.)</p>
+        </div>
+        <div class="gameover">
+            <input type='button' value='play' id='btn1' id='autoBt' onclick='toggleBtn1(); moveAuto(); startClock();' class='playButton'/>
+            <input type='button' value='come back home' id='btn2' onclick="location.href='./home.html'"/>
+            <input type="button" value="record" id="btn3" onclick="location.href='./record.html'"/>
+            <button id="btn4" onclick="resetClock()">reset</button>
+        </div>
+    </div>
+    <div id="pleaseReconnect">
+        <p>sorry. This site is not supported on mobile devices, so please log in again using a computer.</p>
+        <input type="button" value="back" onclick="location.href='./home.html'">
+    </div>
+    <script src="main.js">
+    </script>
+</body>
+</html>

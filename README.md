@@ -1,2 +1,2 @@
 ﻿# new-pig-jump-game
- ㅗㅎㄹ
+All copyrights belong to me.

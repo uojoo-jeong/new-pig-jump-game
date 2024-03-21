@@ -131,7 +131,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
 function gameOver(){
-    if(1246<=x&&jH!==-100&&jump!==true&&x<=1456&&pig.style.marginTop==0+"px"){
+    if(906<=x&&jH!=-100&&jump!=true&&x<=1056&&pig.style.marginTop==0+"px"){
         console.log('zz');
         iscollision=true;
         life=0;

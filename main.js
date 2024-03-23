@@ -19,6 +19,8 @@ let y=0;
 let sI;
 let jH=0;
 let isPlay=false;
+let score=0;
+let scorePoints=false;
 const stopwatch = document.getElementById("stopwatch");
 let hour, min, sec;
 let reconnect=document.getElementById("pleaseReconnect");
@@ -42,6 +44,7 @@ function manual(){
         x=3456;
     }
     cat.style.left= x+"px";
+    gameOver();
 }
 function moveAuto(){
     isPlay = true;
@@ -119,7 +122,6 @@ function frameAction(){
         pig.style.marginTop=jH+"px";
         document.getElementById("line").style.marginTop=-jH+"px";
         clearTimeout(sI);
-        gameOver();
     }
 }
 
@@ -131,25 +133,31 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 
 function gameOver(){
-    if(906<=x&&jH!=-100&&jump!=true&&x<=1056&&pig.style.marginTop==0+"px"){
-        console.log('zz');
+    if((906<=x&&x<=1016)&&(jH===0&&jump!=true)&&(pig.style.marginTop === "0px")){
         iscollision=true;
         life=0;
+        if(life == 0&&iscollision===true){
+            clearTimeout(timerId);
+            stopwatch.innerText = "00:00:00";
+            time = 0;
+            clearTimeout(st);
+            p.style.visibility="visible";
+            btn1.style.visibility = 'visible';
+            btn2.style.visibility = 'visible';
+            btn3.style.visibility = 'visible';
+            btn4.style.visibility = 'visible';
+            life=1;
+            x=3456;
+        }
     }
-    if(life == 0&&iscollision===true){
-        clearTimeout(timerId);
-        stopwatch.innerText = "00:00:00";
-        time = 0;
-        clearTimeout(st);
-        p.style.visibility="visible";
-        btn1.style.visibility = 'visible';
-        btn2.style.visibility = 'visible';
-        btn3.style.visibility = 'visible';
-        btn4.style.visibility = 'visible';
-        life=1;
-        x=3456;
+    if((906>=x&&x<=1016)&&(jH===-100&&jump===true)&&pig.style.marginTop==="-100px"&&scorePoints===false){
+        score+=1;
+        console.log(score);
+        scorePoints=true;
+        if(scorePoints===true&&(x>=1016)&&(jH===0&&jump!=true)&&(pig.style.marginTop === "0px")){
+            scorePoints=false
+        }
     }
-    
 }
 
 

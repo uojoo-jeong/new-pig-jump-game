@@ -21,6 +21,8 @@ let jH=0;
 let isPlay=false;
 let score=0;
 let scorePoints=false;
+let parents;
+let parentsWidth;
 const stopwatch = document.getElementById("stopwatch");
 let hour, min, sec;
 let reconnect=document.getElementById("pleaseReconnect");
@@ -28,12 +30,18 @@ btn1 = document.getElementById('btn1');
 btn2 = document.getElementById('btn2');
 btn3 = document.getElementById('btn3');
 btn4 = document.getElementById('btn4');
+var bodyWidthWithoutMargin = document.body.offsetWidth;
+var bodyMargin = parseInt(window.getComputedStyle(document.body).marginLeft) +
+                 parseInt(window.getComputedStyle(document.body).marginRight);
+var bodyWidthWithMargin = bodyWidthWithoutMargin + bodyMargin;
 function init(){
     p=document.getElementById("information");
     autoBt=document.getElementById("autoBt");
     txt=document.getElementById("txt");
     cat=document.getElementById("cat");
     pig=document.getElementById("pig");
+    parents = document.getElementById("parents");
+    parentsWidth = document.body.offsetWidth;
 }
 function manual(){
     x+=step;
@@ -47,6 +55,7 @@ function manual(){
     gameOver();
 }
 function moveAuto(){
+    score = 0;
     isPlay = true;
     st=setInterval("manual()", 10);
 }
@@ -131,12 +140,11 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     reconnect.style.visibility="visible";
 }
 
-
 function gameOver(){
-    if((906<=x&&x<=1016)&&(jH===0&&jump!=true)&&(pig.style.marginTop === "0px")){
+    if((((bodyWidthWithMargin / 2) - 40) < x && x < ((bodyWidthWithMargin / 2) + 45))&&(jH===0&&jump!=true)&&(pig.style.marginTop === "0px")){
         iscollision=true;
         life=0;
-        if(life == 0&&iscollision===true){
+        if(life === 0&&iscollision===true){
             clearTimeout(timerId);
             stopwatch.innerText = "00:00:00";
             time = 0;
@@ -148,19 +156,15 @@ function gameOver(){
             btn4.style.visibility = 'visible';
             life=1;
             x=3456;
+            let aaa=document.createElement("p")
+            aaa.innerHTML="Your score is "+score;
         }
     }
-    if((906>=x&&x<=1016)&&(jH===-100&&jump===true)&&pig.style.marginTop==="-100px"&&scorePoints===false){
-        score+=1;
-        console.log(score);
-        scorePoints=true;
-        if(scorePoints===true&&(x>=1016)&&(jH===0&&jump!=true)&&(pig.style.marginTop === "0px")){
-            scorePoints=false
-        }
+    if((906==x)&&(pig.style.marginTop === "-100px")){
+        score++;
+        console.log("score = " + score);
     }
 }
-
-
 
 
 
